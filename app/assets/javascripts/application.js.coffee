@@ -6,6 +6,12 @@
 #= require jquery.validate
 #= require jquery.timeago
 #= require jquery.atwho
+
+#= require simple-module/lib/module
+#= require simple-uploader/lib/uploader
+#= require simple-hotkeys/lib/hotkeys
+#= require simditor/lib/simditor
+
 #= require nprogress
 #= require campo
 #= require_tree ./plugins
