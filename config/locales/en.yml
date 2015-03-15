@@ -144,6 +144,9 @@ en:
     en: English
     zh-CN: Chinese(Simplified)
     zh-TW: Chinese(Traditional)
+  preferred_editors:
+    wysiwyg: WYSIWYG editor
+    markdown: Markdown editor
   markdown:
     area:
       attach_images_by: Attach images by

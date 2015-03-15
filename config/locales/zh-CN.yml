@@ -141,6 +141,9 @@ zh-CN:
     en: "英文"
     zh-CN: "简体中文"
     zh-TW: "正体中文"
+  preferred_editors:
+    wysiwyg: "富文本编辑器"
+    markdown: "Markdown 编辑器"
   markdown:
     area:
       attach_images_by: "添加图片"

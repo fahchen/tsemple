@@ -27,9 +27,13 @@
                 .col-sm-6
                   = f.select :locale, I18n.available_locales.map { |locale| [t("locales.#{locale}"), locale] }, { }, class: 'form-control', tabIndex: 3
               .form-group
+                = f.label :preferred_editor, class: 'control-label col-sm-3'
+                .col-sm-6
+                  = f.select :preferred_editor, User.preferred_editors.map { |editor, _| [t("preferred_editors.#{editor}"), editor] }, { }, class: 'form-control', tabIndex: 4
+              .form-group
                 = label_tag :current_password, t('.current_password'), class: 'control-label col-sm-3'
                 .col-sm-6
-                  = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off', tabIndex: 4
+                  = password_field_tag :current_password, nil, class: 'form-control', autocomplete: 'off', tabIndex: 5
               .form-group
                 .col-sm-6.col-sm-push-3
                   = f.submit t('.save_changes'), class: 'btn btn-primary', tabIndex: 5
