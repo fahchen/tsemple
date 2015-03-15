@@ -25,6 +25,7 @@ zh-CN:
         password: "密码"
         password_confirmation: "密码确认"
         username: "用户名"
+        preferred_editor: 常用的编辑器
     errors:
       models:
         user:

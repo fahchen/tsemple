@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -300,7 +301,8 @@ CREATE TABLE users (
     send_comment_email boolean DEFAULT true,
     send_comment_web boolean DEFAULT true,
     send_mention_email boolean DEFAULT true,
-    send_mention_web boolean DEFAULT true
+    send_mention_web boolean DEFAULT true,
+    preferred_editor integer DEFAULT 0
 );
 
 
@@ -584,4 +586,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140405074043');
 INSERT INTO schema_migrations (version) VALUES ('20140412065000');
 
 INSERT INTO schema_migrations (version) VALUES ('20140412113810');
+
+INSERT INTO schema_migrations (version) VALUES ('20150315123323');
 

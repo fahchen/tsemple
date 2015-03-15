@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   gravtastic secure: true, default: 'wavatar', rating: 'G', size: 48
   mount_uploader :avatar, AvatarUploader
 
+  enum preferred_editor: { wysiwyg: 0, markdown: 1  }
+
   has_secure_password
   has_many :topics, dependent: :destroy
   has_many :comments, dependent: :destroy

@@ -25,6 +25,7 @@ zh-TW:
         password: "密碼"
         password_confirmation: "密碼確認"
         username: "用戶名"
+        preferred_editor: 常用的編輯器
     errors:
       models:
         user:
