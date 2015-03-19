@@ -85,6 +85,9 @@ gem 'resque_mailer', '~> 2.2.6'
 gem 'jquery-atwho-rails'
 gem 'gemoji'
 
+# Assets manager
+gem "bower-rails", "~> 0.9.2"
+
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
   gem 'spring'
