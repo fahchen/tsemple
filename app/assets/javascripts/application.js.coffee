@@ -7,6 +7,9 @@
 #= require jquery.timeago
 #= require jquery.atwho
 #= require nprogress
+
+#= require simditor
+
 #= require campo
 #= require_tree ./plugins
 
