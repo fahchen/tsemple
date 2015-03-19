@@ -5,7 +5,7 @@ class Settings::AccountsController < Settings::ApplicationController
   end
 
   def update
-    if @user.update_attributes params.require(:user).permit(:username, :email, :locale)
+    if @user.update_attributes params.require(:user).permit(:username, :email, :locale, :preferred_editor)
       flash[:success] = I18n.t('settings.accounts.flashes.successfully_updated')
       redirect_to settings_account_path
     else
