@@ -30,7 +30,5 @@ module Campo
     end
 
     config.active_record.schema_format = :sql
-
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
   end
 end
