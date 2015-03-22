@@ -9,9 +9,12 @@
       = ' · '
       a href=comment_link(comment)
         = time_ago_tag comment.created_at
-  = form_for comment, remote: true do |f|
+  = form_for comment, remote: true, html: { class: "comment-#{current_user.preferred_editor}-editor" } do |f|
     .form-group
-      = markdown_area f, :body
+      - if current_user.markdown?
+        = markdown_area f, :body, tabIndex: 3
+      - else
+        = f.text_area :body, tabIndex: 3, class: 'form-control wysiwyg-editor'
     = f.submit t('.save_changes'), class: 'btn btn-success', 'data-disable-with' => t('.save_changes')
     '
     a.btn.btn-default href=cancel_comment_path(comment) data-remote="true"
@@ -30,3 +33,8 @@ javascript:
       }
     }
   });
+
+  new Simditor({
+    textarea: '#edit_comment_#{comment.id} .wysiwyg-editor'
+  });
+
