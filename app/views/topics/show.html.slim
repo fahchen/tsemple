@@ -71,9 +71,12 @@
                           b = current_user.name
                           '
                           = "@#{current_user.username}"
-                      = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true do |f|
+                      = form_for @topic.comments.new, url: topic_comments_path(@topic), remote: true, html: { class: "comment-#{current_user.preferred_editor}-editor" } do |f|
                         .form-group
-                          = markdown_area f, :body
+                          - if current_user.markdown?
+                            = markdown_area f, :body, tabIndex: 3
+                          - else
+                            = f.text_area :body, tabIndex: 3, class: 'form-control'
                         = f.submit t('.add_this_comment'), class: 'btn btn-success', 'data-disable-with' => t('.add_this_comment')
               - else
                 = t '.your_account_had_been_locked'
@@ -130,3 +133,9 @@
         }
       }
     });
+
+coffee:
+  if $('form.comment-wysiwyg-editor').length > 0
+    campo.comment_wysiwyg_editor = new Simditor
+      textarea: $('#comment_body')
+
