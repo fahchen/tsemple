@@ -1,4 +1,4 @@
-= form_for @topic, remote: true, html: { class: 'topic-form' } do |f|
+= form_for @topic, remote: true, html: { class: "topic-form topic-#{current_user.preferred_editor}-editor" } do |f|
   .row
     .col-md-9
       .form-group
@@ -7,7 +7,10 @@
       .form-group
         = f.collection_select :category_id, Category.order(topics_count: :desc), :id, :name, { include_blank: t('.no_category')}, class: 'form-control', tabIndex: 2
   .form-group
-    = markdown_area f, :body, tabIndex: 3
+    - if current_user.markdown?
+      = markdown_area f, :body, tabIndex: 3
+    - else
+      = f.text_area :body, tabIndex: 3, class: 'form-control'
   - if topic.new_record?
     = f.submit t('.create_topic'), class: 'btn btn-success', tabIndex: 4, 'data-disable-with' => t('.create_topic')
   - else
@@ -37,3 +40,9 @@ javascript:
       }
     }
   });
+
+coffee:
+  if $('form.topic-wysiwyg-editor').length > 0
+    new Simditor
+      textarea: $('#topic_body')
+
