@@ -10,6 +10,8 @@ $.validator.setDefaults
   errorPlacement: (error, element) ->
     if element.closest('.markdown-area').length
       error.insertAfter(element.closest('.markdown-area'))
+    else if element.closest('.form-group').length
+      error.insertAfter(element.closest('.form-group'))
     else if element.parent('.input-group').length
       error.insertAfter(element.parent())
     else

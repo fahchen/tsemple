@@ -23,6 +23,7 @@
 
 javascript:
   $('##{form_id}').validate({
+    ignore: '',
     rules: {
       'topic[title]': {
         required: true
@@ -43,6 +44,8 @@ javascript:
 
 coffee:
   if $('form.topic-wysiwyg-editor').length > 0
-    new Simditor
+    topic_wysiwyg_editor = new Simditor
       textarea: $('#topic_body')
-
+    topic_wysiwyg_editor.on 'valuechanged', (e, src) ->
+      e.target.sync()
+      $('form.topic-wysiwyg-editor').validate().element('#topic_body');
