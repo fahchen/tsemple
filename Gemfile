@@ -108,4 +108,6 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.3.0'
+
+  gem 'rspec-rails'
 end
