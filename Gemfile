@@ -110,4 +110,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.3.0'
 
   gem 'rspec-rails'
+
+  # Auto test
+  gem 'guard-rspec', require: false
 end
