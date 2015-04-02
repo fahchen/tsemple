@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :topic do
     user
     title "MyString"
-    body "MyString"
+    wysiwyg_body "<h3>H3</h3>"
   end
 end

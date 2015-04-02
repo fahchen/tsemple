@@ -45,7 +45,7 @@ class TopicsControllerTest < ActionController::TestCase
   test "should update topic" do
     topic = create(:topic)
     login_as topic.user
-    xhr :patch, :update, id: topic, topic: { title: 'change', body: 'change' }
+    xhr :patch, :update, id: topic, topic: { title: 'change', wysiwyg_body: 'change' }
     topic.reload
     assert_equal 'change', topic.title
     assert_equal 'change', topic.body

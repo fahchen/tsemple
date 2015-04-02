@@ -5,12 +5,16 @@ class Topic < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  include MarkdownHelper
+  include ActionView::Helpers
+
   belongs_to :user
   belongs_to :category, counter_cache: true
   has_many :comments, as: 'commentable'
 
   validates :title, :body, presence: true
 
+  before_validation :parse_body
   after_create :update_hot, :owner_subscribe
   after_touch :update_hot
 
@@ -48,5 +52,14 @@ class Topic < ActiveRecord::Base
         ]
       }
     ).limit(num).records.to_a rescue []
+  end
+
+  private
+  def parse_body
+    self.body = if user.markdown?
+                  markdown_format(markdown_body)
+                else
+                  wysiwyg_body
+                end
   end
 end

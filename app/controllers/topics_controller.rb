@@ -77,7 +77,8 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :category_id, :body)
+    # TODO: need remove :body
+    params.require(:topic).permit(:title, :category_id, :wysiwyg_body, :markdown_body, :body)
   end
 
   def find_topic
